@@ -1,0 +1,37 @@
+CONSULTAS
+
+* setInitialSize(int initialSize): Este método se utiliza para establecer el tamaño inicial del pool de conexiones.
+Es decir, cuando se crea el pool, se crearán inicialmente initialSize conexiones y estarán disponibles para su uso inmediato.
+
+*setMinIdle(int minIdle): Este método establece el número mínimo de conexiones inactivas (idle) que el pool debe mantener en cualquier momento. 
+Si el número de conexiones inactivas cae por debajo de este valor, el pool creará nuevas conexiones para mantener al menos minIdle conexiones inactivas.
+
+*setMaxIdle(int maxIdle): Este método define el número máximo de conexiones inactivas que el pool puede mantener en cualquier momento.
+Si el número de conexiones inactivas excede este valor, el pool puede cerrar conexiones adicionales para mantenerse dentro de este límite.
+
+*@Dependent:Este contexto de ámbito indica que el ciclo de vida del bean depende completamente del ciclo de vida del bean que lo inyecta o solicita. 
+Es útil cuando necesitas que una instancia de un bean sea creada y destruida para cada instancia del bean que lo inyecta.
+
+*@RequestScoped:Un bean con este ámbito vive dentro de una solicitud HTTP. Es creado cuando se inicia una solicitud HTTP y se destruye cuando la solicitud ha sido procesada.
+Es útil para objetos que necesitan estar disponibles solo durante la vida de una solicitud HTTP, como datos de formulario o controladores de solicitud.
+
+*@SessionScoped:Este contexto de ámbito mantiene el bean durante la sesión del usuario. Se crea cuando un usuario inicia una sesión y se destruye cuando la sesión termina.
+Es útil para mantener datos específicos del usuario durante toda su sesión, como información de inicio de sesión o preferencias del usuario.
+
+*@ConversationScoped:Este contexto de ámbito mantiene el bean durante una "conversación" entre el usuario y la aplicación. La conversación se inicia y se termina explícitamente.
+Se utiliza cuando necesitas mantener el estado durante múltiples solicitudes del usuario, pero no durante toda la sesión. Por ejemplo, en un flujo de trabajo de varias páginas donde se necesita mantener el estado entre páginas.
+
+*@ApplicationScoped:El bean vive durante toda la duración de la aplicación. Se crea cuando se despliega la aplicación y se destruye cuando la aplicación se detiene o se retira.
+Útil para datos que deben ser compartidos por todos los usuarios de la aplicación, como configuraciones de la aplicación, listas de datos estáticos, etc.
+
+*@Retention: Esta anotación se utiliza para especificar cuánto tiempo una anotación debe ser retenida. En otras palabras, determina si una anotación está disponible para el compilador, el tiempo de ejecución o ambos. Tiene tres valores de retención posibles:
+RetentionPolicy.SOURCE: La anotación se conserva solo en el código fuente y se descarta durante la compilación. No está disponible en el archivo de clase ni en tiempo de ejecución.
+RetentionPolicy.CLASS: La anotación se conserva en el archivo de clase generado pero no está disponible en tiempo de ejecución. Esto significa que está disponible para el compilador y para herramientas de tiempo de compilación, pero no para la máquina virtual Java en tiempo de ejecución.
+RetentionPolicy.RUNTIME: La anotación se conserva en el archivo de clase generado y está disponible en tiempo de ejecución. Esto permite que la anotación sea examinada en tiempo de ejecución a través de reflexión.
+
+*@Target: Esta anotación se utiliza para especificar dónde se puede aplicar una anotación dada. Determina los tipos de elementos que pueden ser anotados con la anotación en cuestión. 
+
+*@Qualifier: Esta anotación se utiliza para calificar una inyección de dependencia cuando hay varias implementaciones disponibles. Por ejemplo, si tienes varias implementaciones de una interfaz y quieres especificar cuál debería ser inyectada en un punto de inyección particular, puedes crear tus propias anotaciones calificadoras y aplicarlas a las implementaciones respectivas. Luego, al inyectar la dependencia, se puede utilizar la anotación calificadora correspondiente para indicar cuál de las implementaciones debe ser utilizada.
+
+
+
